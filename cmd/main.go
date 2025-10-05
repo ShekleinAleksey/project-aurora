@@ -29,15 +29,14 @@ func main() {
 
 			switch text {
 			case "/start":
-				msg := tgbotapi.NewMessage(chatID, "Привет! Я бот. Используй /help для списка команд")
+				msg := tgbotapi.NewMessage(chatID, "Привет! Я бот для учета расходов твоего 3D магазина.")
 				bot.Send(msg)
 
 			case "/help":
 				helpText := `Доступные команды:
-/start - начать работу
-/help - помощь
-/info - информация о боте
-/about - о разработчике`
+/expense <сумма> <категория> <описание> - добавить расход
+/expenses - показать сегодняшние расходы
+/total - итог за сегодня`
 				msg := tgbotapi.NewMessage(chatID, helpText)
 				bot.Send(msg)
 
