@@ -1,6 +1,6 @@
 package service
 
-import "github.com/ShekleinAleksey/project_Aurora/internal/repository"
+import "github.com/ShekleinAleksey/project-aurora/internal/repository"
 
 type Deps struct {
 	ExpenseRepository *repository.ExpenseRepository

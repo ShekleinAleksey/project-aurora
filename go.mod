@@ -1,4 +1,4 @@
-module github.com/ShekleinAleksey/project_Aurora
+module github.com/ShekleinAleksey/project-aurora
 
 go 1.21.6
 

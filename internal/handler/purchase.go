@@ -1,10 +1,10 @@
 package handler
 
-import "github.com/ShekleinAleksey/project_Aurora/internal/entity"
+import "github.com/ShekleinAleksey/project-aurora/internal/entity"
 
 type ExpenseService interface {
-	GetAllExpansies() ([]entity.Expense, error)
-	GetExpanseByID(id int) (entity.Expense, error)
+	GetAllExpansies() ([]entity.Purchase, error)
+	GetExpanseByID(id int) (entity.Purchase, error)
 }
 
 type ExpenseHandler struct {
