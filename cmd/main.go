@@ -3,11 +3,25 @@ package main
 import (
 	"fmt"
 	"log"
+	"net/http"
 
+	"github.com/ShekleinAleksey/project-aurora/config"
+	"github.com/ShekleinAleksey/project-aurora/pkg/postgres"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
 func main() {
+	cfg, err := config.LoadConfig()
+	if err != nil {
+		log.Fatalf("Error get env variables %v", err)
+	}
+	log.Println("cfg", cfg)
+	db, err := postgres.NewDB(cfg)
+	if err != nil {
+		log.Fatalf("Error opening database %v", err)
+	}
+	defer db.Close()
+
 	key := "7576443951:AAGEbz7-S8AmrF1-ZS-lIEaSFPXpVCjXlqc"
 	bot, err := tgbotapi.NewBotAPI(key)
 	if err != nil {
@@ -57,5 +71,5 @@ func main() {
 			// bot.Send(msg)
 		}
 	}
-
+	http.ListenAndServe(":8080", nil)
 }
