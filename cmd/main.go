@@ -1,13 +1,15 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 
 	"github.com/ShekleinAleksey/project-aurora/config"
+	"github.com/ShekleinAleksey/project-aurora/internal/handler"
+	"github.com/ShekleinAleksey/project-aurora/internal/repository"
+	"github.com/ShekleinAleksey/project-aurora/internal/service"
 	"github.com/ShekleinAleksey/project-aurora/pkg/postgres"
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+	"github.com/sirupsen/logrus"
 )
 
 func main() {
@@ -22,54 +24,64 @@ func main() {
 	}
 	defer db.Close()
 
-	key := "7576443951:AAGEbz7-S8AmrF1-ZS-lIEaSFPXpVCjXlqc"
-	bot, err := tgbotapi.NewBotAPI(key)
-	if err != nil {
-		fmt.Println("Cannot init tgbot")
-	}
-	log.Printf("Auth on account %s", bot.Self.UserName)
+	logrus.Info("Initializing repository...")
+	repo := repository.NewRepository(db)
+	logrus.Info("Initializing service...")
+	service := service.NewService(repo)
+	logrus.Info("Initializing handler...")
+	handlers := handler.NewHandler(service)
 
-	u := tgbotapi.NewUpdate(0)
-	u.Timeout = 60
+	// 	key := "7576443951:AAGEbz7-S8AmrF1-ZS-lIEaSFPXpVCjXlqc"
+	// 	bot, err := tgbotapi.NewBotAPI(key)
+	// 	if err != nil {
+	// 		fmt.Println("Cannot init tgbot")
+	// 	}
+	// 	log.Printf("Auth on account %s", bot.Self.UserName)
 
-	updates := bot.GetUpdatesChan(u)
-	for update := range updates {
-		if update.Message != nil {
-			text := update.Message.Text
-			chatID := update.Message.Chat.ID
-			userID := update.Message.From.ID
-			log.Printf("[%s](%d) %s", update.Message.From.UserName, userID, text)
-			// msg := tgbotapi.NewMessage(chatID, text)
+	// 	u := tgbotapi.NewUpdate(0)
+	// 	u.Timeout = 60
 
-			switch text {
-			case "/start":
-				msg := tgbotapi.NewMessage(chatID, "Привет! Я бот для учета расходов твоего 3D магазина.")
-				bot.Send(msg)
+	// 	updates := bot.GetUpdatesChan(u)
+	// 	for update := range updates {
+	// 		if update.Message != nil {
+	// 			text := update.Message.Text
+	// 			chatID := update.Message.Chat.ID
+	// 			userID := update.Message.From.ID
+	// 			log.Printf("[%s](%d) %s", update.Message.From.UserName, userID, text)
+	// 			// msg := tgbotapi.NewMessage(chatID, text)
 
-			case "/help":
-				helpText := `Доступные команды:
-/expense <сумма> <категория> <описание> - добавить расход
-/expenses - показать сегодняшние расходы
-/total - итог за сегодня`
-				msg := tgbotapi.NewMessage(chatID, helpText)
-				bot.Send(msg)
+	// 			switch text {
+	// 			case "/start":
+	// 				msg := tgbotapi.NewMessage(chatID, "Привет! Я бот для учета расходов твоего 3D магазина.")
+	// 				bot.Send(msg)
 
-			case "/info":
-				msg := tgbotapi.NewMessage(chatID, "Я простой Telegram бот на Go")
-				bot.Send(msg)
+	// 			case "/help":
+	// 				helpText := `Доступные команды:
+	// /expense <сумма> <категория> <описание> - добавить расход
+	// /expenses - показать сегодняшние расходы
+	// /total - итог за сегодня`
+	// 				msg := tgbotapi.NewMessage(chatID, helpText)
+	// 				bot.Send(msg)
 
-			case "/calc":
-				msg := tgbotapi.NewMessage(chatID, "Разработано с использованием tgbotapi")
-				bot.Send(msg)
+	// 			case "/info":
+	// 				msg := tgbotapi.NewMessage(chatID, "Я простой Telegram бот на Go")
+	// 				bot.Send(msg)
 
-			default:
-				// Если это не команда, делаем эхо
-				msg := tgbotapi.NewMessage(chatID, text)
-				bot.Send(msg)
-			}
+	// 			case "/calc":
+	// 				msg := tgbotapi.NewMessage(chatID, "Разработано с использованием tgbotapi")
+	// 				bot.Send(msg)
 
-			// bot.Send(msg)
-		}
-	}
-	http.ListenAndServe(":8080", nil)
+	// 			default:
+	// 				// Если это не команда, делаем эхо
+	// 				msg := tgbotapi.NewMessage(chatID, text)
+	// 				bot.Send(msg)
+	// 			}
+
+	// 			// bot.Send(msg)
+	// 		}
+	// 	}
+	router := handlers.InitRoutes()
+
+	log.Println("Server started at :8080")
+	http.ListenAndServe(":8080", router)
 }

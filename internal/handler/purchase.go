@@ -1,16 +1,13 @@
 package handler
 
-import "github.com/ShekleinAleksey/project-aurora/internal/entity"
+import (
+	"github.com/ShekleinAleksey/project-aurora/internal/service"
+)
 
-type ExpenseService interface {
-	GetAllExpansies() ([]entity.Purchase, error)
-	GetExpanseByID(id int) (entity.Purchase, error)
+type PurchaseHandler struct {
+	service service.PurchaseService
 }
 
-type ExpenseHandler struct {
-	ExpenseService ExpenseService
-}
-
-func NewExpenseHandler(expenseService ExpenseService) *ExpenseHandler {
-	return &ExpenseHandler{ExpenseService: expenseService}
+func NewPurchaseHandler(service service.PurchaseService) *PurchaseHandler {
+	return &PurchaseHandler{service: service}
 }

@@ -2,16 +2,12 @@ package service
 
 import "github.com/ShekleinAleksey/project-aurora/internal/repository"
 
-type Deps struct {
-	ExpenseRepository *repository.ExpenseRepository
-}
-
 type Service struct {
-	ExpenseService *ExpenseService
+	PurchaseService PurchaseService
 }
 
-func NewService(deps Deps) *Service {
+func NewService(r *repository.Repository) *Service {
 	return &Service{
-		ExpenseService: NewExpenseService(*deps.ExpenseRepository),
+		PurchaseService: NewPurchaseService(r.PurchaseRepository),
 	}
 }

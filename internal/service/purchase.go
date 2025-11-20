@@ -2,10 +2,13 @@ package service
 
 import "github.com/ShekleinAleksey/project-aurora/internal/repository"
 
-type ExpenseService struct {
-	repo repository.ExpenseRepository
+type PurchaseService interface {
 }
 
-func NewExpenseService(repo repository.ExpenseRepository) *ExpenseService {
-	return &ExpenseService{repo: repo}
+type purchaseService struct {
+	repo repository.PurchaseRepository
+}
+
+func NewPurchaseService(repo repository.PurchaseRepository) PurchaseService {
+	return &purchaseService{repo: repo}
 }

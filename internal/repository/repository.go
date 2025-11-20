@@ -5,11 +5,11 @@ import (
 )
 
 type Repository struct {
-	ExpenseRepository *ExpenseRepository
+	PurchaseRepository PurchaseRepository
 }
 
 func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{
-		ExpenseRepository: NewExpenseRepository(db),
+		PurchaseRepository: NewPurchaseRepository(db),
 	}
 }

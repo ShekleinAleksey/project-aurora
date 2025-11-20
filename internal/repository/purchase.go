@@ -2,10 +2,13 @@ package repository
 
 import "github.com/jmoiron/sqlx"
 
-type ExpenseRepository struct {
+type PurchaseRepository interface {
+}
+
+type purchaseRepo struct {
 	db *sqlx.DB
 }
 
-func NewExpenseRepository(db *sqlx.DB) *ExpenseRepository {
-	return &ExpenseRepository{db: db}
+func NewPurchaseRepository(db *sqlx.DB) PurchaseRepository {
+	return &purchaseRepo{db: db}
 }
