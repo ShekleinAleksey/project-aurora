@@ -3,6 +3,9 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
+	"os/signal"
+	"syscall"
 
 	"github.com/ShekleinAleksey/project-aurora/config"
 	"github.com/ShekleinAleksey/project-aurora/internal/handler"
@@ -81,6 +84,9 @@ func main() {
 	// 		}
 	// 	}
 	router := handlers.InitRoutes()
+
+	quit := make(chan os.Signal, 1) // we need to reserve to buffer size 1, so the notifier are not blocked
+	signal.Notify(quit, os.Interrupt, syscall.SIGTERM)
 
 	log.Println("Server started at :8080")
 	http.ListenAndServe(":8080", router)
