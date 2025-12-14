@@ -3,9 +3,6 @@ package main
 import (
 	"log"
 	"net/http"
-	"os"
-	"os/signal"
-	"syscall"
 
 	"github.com/ShekleinAleksey/project-aurora/config"
 	"github.com/ShekleinAleksey/project-aurora/internal/handler"
@@ -15,6 +12,11 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// @title Aurora
+// @version 1.0
+// @description Система для контроля материалов и отслеживания статусов заказов
+// @host localhost:8080
+// @BasePath /api/v1
 func main() {
 	cfg, err := config.LoadConfig()
 	if err != nil {
@@ -85,8 +87,8 @@ func main() {
 	// 	}
 	router := handlers.InitRoutes()
 
-	quit := make(chan os.Signal, 1) // we need to reserve to buffer size 1, so the notifier are not blocked
-	signal.Notify(quit, os.Interrupt, syscall.SIGTERM)
+	// quit := make(chan os.Signal, 1) // we need to reserve to buffer size 1, so the notifier are not blocked
+	// signal.Notify(quit, os.Interrupt, syscall.SIGTERM)
 
 	log.Println("Server started at :8080")
 	http.ListenAndServe(":8080", router)
