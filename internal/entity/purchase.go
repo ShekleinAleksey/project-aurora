@@ -4,7 +4,7 @@ import "time"
 
 type Purchase struct {
 	ID           int       `json:"id"`
-	MaterialID   int       `json:"material_id"`
+	Material     string    `json:"material"`
 	Count        float64   `json:"count"`
 	UnitPrice    float64   `json:"unit_price"`
 	TotalPrice   float64   `json:"total_price"`
@@ -14,7 +14,7 @@ type Purchase struct {
 }
 
 type CreatePurchaseRequest struct {
-	MaterialID   int       `json:"material_id" binding:"required,min=1"`
+	Material     string    `json:"material" binding:"required"`
 	Count        float64   `json:"count" binding:"required,gt=0"`
 	UnitPrice    float64   `json:"unit_price" binding:"required,gt=0"`
 	Notes        string    `json:"notes"`
