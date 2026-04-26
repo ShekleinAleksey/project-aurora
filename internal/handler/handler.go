@@ -50,6 +50,16 @@ func (h *Handler) InitRoutes() *gin.Engine {
 			categories.PUT("/:id", h.CategoryHandler.UpdateCategory)
 			categories.DELETE("/:id", h.CategoryHandler.DeleteCategory)
 		}
+		purchases := api.Group("/purchases")
+		{
+			purchases.GET("", h.PurchaseHandler.GetAllPurchases)
+			purchases.POST("", h.PurchaseHandler.CreatePurchase)
+			purchases.GET("/:id", h.PurchaseHandler.GetPurchase)
+			purchases.PUT("/:id", h.PurchaseHandler.UpdatePurchases)
+			purchases.DELETE("/:id", h.PurchaseHandler.DeletePurchase)
+			purchases.GET("/sum", h.PurchaseHandler.SumTotalPrice)
+			purchases.GET("/import", h.PurchaseHandler.ImportPurchases)
+		}
 	}
 
 	return router

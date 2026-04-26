@@ -1,0 +1,152 @@
+[
+  {
+    "material": "3D принтер",
+    "count": 1,
+    "unit_price": 18999,
+    "purchase_date": "2025-08-15T10:30:00Z"
+  },
+  {
+    "material": "Ультрафиолетовый фонарик",
+    "count": 1,
+    "unit_price": 349,
+    "purchase_date": "2025-08-16T10:30:00Z"
+  },
+  {
+    "material": "Спирт изопропиловый 5 литров",
+    "count": 1,
+    "unit_price": 1370,
+    "purchase_date": "2025-08-16T10:30:00Z"
+  },
+  {
+    "material": "Фотополимерная смола 1 литр",
+    "count": 1,
+    "unit_price": 1702,
+    "purchase_date": "2025-08-16T10:30:00Z"
+  },
+  {
+    "material": "Наждачная бумага",
+    "count": 1,
+    "unit_price": 187,
+    "purchase_date": "2025-08-30T10:30:00Z"
+  },
+  {
+    "material": "Акриловый грунт",
+    "count": 1,
+    "unit_price": 609,
+    "purchase_date": "2025-08-30T10:30:00Z"
+  },
+  {
+    "material": "Акриловые краски",
+    "count": 1,
+    "unit_price": 2545,
+    "purchase_date": "2025-08-30T10:30:00Z"
+  },
+  {
+    "material": "Набор кистей",
+    "count": 1,
+    "unit_price": 422,
+    "purchase_date": "2025-09-06T10:30:00Z"
+  },
+  {
+    "material": "Фотополимерная смола",
+    "count": 1,
+    "unit_price": 1859,
+    "purchase_date": "2025-09-06T10:30:00Z"
+  },
+  {
+    "material": "Коврик для резки раскройный А2",
+    "count": 1,
+    "unit_price": 522,
+    "purchase_date": "2025-09-06T10:30:00Z"
+  },
+  {
+    "material": "Палитра для красок",
+    "count": 1,
+    "unit_price": 217,
+    "purchase_date": "2025-09-13T10:30:00Z"
+  },
+  {
+    "material": "Набор инструментов",
+    "count": 1,
+    "unit_price": 660,
+    "purchase_date": "2025-09-13T10:30:00Z"
+  },
+  {
+    "material": "Металлический фильтр и ситечко",
+    "count": 1,
+    "unit_price": 294,
+    "purchase_date": "2025-09-13T10:30:00Z"
+  },
+  {
+    "material": "Лак акриловый глянцевый",
+    "count": 1,
+    "unit_price": 271,
+    "purchase_date": "2025-09-13T10:30:00Z"
+  },
+  {
+    "material": "Лак акриловый матовый",
+    "count": 1,
+    "unit_price": 271,
+    "purchase_date": "2025-09-13T10:30:00Z"
+  },
+  {
+    "material": "Перчатки нитриловые",
+    "count": 1,
+    "unit_price": 459,
+    "purchase_date": "2025-10-01T10:30:00Z"
+  },
+  {
+    "material": "Жидкая маска",
+    "count": 1,
+    "unit_price": 268,
+    "purchase_date": "2025-10-03T10:30:00Z"
+  },
+  {
+    "material": "Разбавитель для акриловых красок",
+    "count": 1,
+    "unit_price": 754,
+    "purchase_date": "2025-10-03T10:30:00Z"
+  },
+  {
+    "material": "Аэрограф с компрессором",
+    "count": 1,
+    "unit_price": 3535,
+    "purchase_date": "2025-10-03T10:30:00Z"
+  },
+  {
+    "material": "Зажим-держатель для моделизма",
+    "count": 1,
+    "unit_price": 541,
+    "purchase_date": "2025-10-03T10:30:00Z"
+  },
+  {
+    "material": "Респиратор",
+    "count": 1,
+    "unit_price": 853,
+    "purchase_date": "2025-10-19T10:30:00Z"
+  },
+  {
+    "material": "Очиститель аэрографа",
+    "count": 1,
+    "unit_price": 330,
+    "purchase_date": "2025-10-19T10:30:00Z"
+  },
+  {
+    "material": "Акриловый грунт белый",
+    "count": 1,
+    "unit_price": 563,
+    "purchase_date": "2025-11-03T10:30:00Z"
+  },
+  {
+    "material": "Фотополимерная смола",
+    "count": 1,
+    "unit_price": 1890,
+    "purchase_date": "2025-11-08T10:30:00Z"
+  },
+  {
+    "material": "Гравер",
+    "count": 1,
+    "unit_price": 0,
+    "purchase_date": "2026-01-10T10:30:00Z"
+  }
+]

@@ -3,14 +3,14 @@ package entity
 import "time"
 
 type Purchase struct {
-	ID           int       `json:"id"`
-	Material     string    `json:"material"`
-	Count        float64   `json:"count"`
-	UnitPrice    float64   `json:"unit_price"`
-	TotalPrice   float64   `json:"total_price"`
-	Notes        string    `json:"notes"`
-	PurchaseDate time.Time `json:"purchase_date"`
-	CreatedAt    time.Time `json:"created_at"`
+	ID           int       `json:"id" db:"id"`
+	Material     string    `json:"material" db:"material"`
+	Count        float64   `json:"count" db:"count"`
+	UnitPrice    float64   `json:"unit_price" db:"unit_price"`
+	TotalPrice   float64   `json:"total_price" db:"total_price"`
+	Notes        string    `json:"notes" db:"notes"`
+	PurchaseDate time.Time `json:"purchase_date" db:"purchase_date"`
+	CreatedAt    time.Time `json:"created_at" db:"created_at"`
 }
 
 type CreatePurchaseRequest struct {

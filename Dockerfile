@@ -12,7 +12,7 @@ COPY ./ ./
 RUN go build -ldflags="-s -w" -o project-aurora ./cmd/main.go
 
 # Этап 2: Запуск приложения
-FROM alpine
+FROM alpine:3.20
 
 # Устанавливаем клиент PostgreSQL 
 RUN apk add --no-cache postgresql-client

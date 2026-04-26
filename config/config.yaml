@@ -6,8 +6,8 @@ log:
   level: 'debug'
 
 db:
-    username: "admin"
-    host: "localhost"
+    username: "postgres"
+    host: "db"
     port: "5432"
     dbname: "auroradb"
     sslmode: "disable"

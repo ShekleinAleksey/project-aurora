@@ -169,3 +169,31 @@ func (h *PurchaseHandler) DeletePurchase(c *gin.Context) {
 		"status": "success",
 	})
 }
+
+func (h *PurchaseHandler) SumTotalPrice(c *gin.Context) {
+	total, err := h.service.SumTotalPrice()
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+	c.JSON(http.StatusOK, total)
+}
+
+// ImportPurchases импортирует покупки из JSON файла в корне проекта
+func (h *PurchaseHandler) ImportPurchases(c *gin.Context) {
+	// Указываем путь к файлу в корне проекта
+	filePath := "purchases.json"
+
+	// Импортируем данные
+	count, err := h.service.ImportFromJSON(filePath)
+	if err != nil {
+		newErrorResponse(c, http.StatusInternalServerError, err.Error())
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Purchases imported successfully",
+		"count":   count,
+		"file":    filePath,
+	})
+}
